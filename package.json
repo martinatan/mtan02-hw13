@@ -1,0 +1,19 @@
+{
+  "name": "hw13app",
+  "version": "1.0.0",
+  "description": "Martina Tan HW13",
+  "main": "serve_pages.js",
+  "scripts": {
+  "start": "node serve_pages.js"
+},
+  "repository": {
+  "type": "git",
+  "url": ""
+},
+  "author": "Martina Tan",
+  "license": "ISC",
+  "bugs": {
+  "url": ""
+},
+  "homepage": ""
+}
