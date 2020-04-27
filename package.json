@@ -4,11 +4,14 @@
   "description": "Martina Tan HW13",
   "main": "serve_pages.js",
   "scripts": {
-  "start": "node serve_pages.js"
-},
+    "start": "node serve_pages.js"
+  },
+  "engines": {
+    "node": "12.16.x"
+  },
   "repository": {
   "type": "git",
-  "url": ""
+  "url": "https://github.com/martinatan/mtan02-hw13.git"
 },
   "author": "Martina Tan",
   "license": "ISC",

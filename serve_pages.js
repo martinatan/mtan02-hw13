@@ -3,7 +3,7 @@ var myModule = require('./populate_module.js');
 var urlModule = require('url');
 const csvtojson = require("csvtojson");
 
-const MongoClient = require('mongodb').MongoClient;
+//const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb+srv://martinatan:Figment0310+@cluster0-wcwmu.mongodb.net/test?retryWrites=true&w=majority";
 
 const dbName = "comp20_hw13";
