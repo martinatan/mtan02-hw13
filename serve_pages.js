@@ -41,8 +41,6 @@ http.createServer( function(req,res) {
 				  "</head><body>");
 
 		if (company != "") {
-			console.log("Searching by company");
-
 			var s = collObj.find({Company: company}, {projection: {Company: 1, Ticker: 1, 
 				_id: 0}}).stream();
 
@@ -50,7 +48,8 @@ http.createServer( function(req,res) {
 													<p><strong>Ticker Name:</strong> <br/>${item.Ticker}<p>` );});
 			s.on("end", function() {res.write(`<p>No other matches found. Try again for more results.</p>`); db.close();});
 			res.write("</body></html>");
-		} else if (ticker != "") {
+		}
+		if (ticker != "") {
 			var s = collObj.find({Ticker: "ticker"}, {projection: {Company: 1, Ticker: 1, 
 				_id: 0}}).stream();
 
@@ -58,7 +57,8 @@ http.createServer( function(req,res) {
 													<p><strong>Ticker Name:</strong> <br/>${item.Ticker}<p>` );});
 			s.on("end", function() {res.write(`<p>No other matches found. Try again for more results.</p>`); db.close();});
 			res.write("</body></html>");
-		} else if (company == "" && ticker == "") {
+		}
+		if (company == "" && ticker == "") {
 			res.write("<p>No search term entered. Go back and try again.</p>");
 			res.write("</body></html>");
 		}
