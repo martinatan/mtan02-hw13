@@ -3,7 +3,7 @@ var myModule = require('./populate_module.js');
 var urlModule = require('url');
 const csvtojson = require("csvtojson");
 
-//const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb+srv://martinatan:Figment0310+@cluster0-wcwmu.mongodb.net/test?retryWrites=true&w=majority";
 
 const dbName = "comp20_hw13";
@@ -13,9 +13,6 @@ const csvName = "companies.csv";
 var queryObj = null;
 
 var port = process.env.PORT || 3000;
-
-//run the following line to populate database the first time
-//myModule.populateDB(url, dbName, collName, csvName);
 
 console.log("beginning of main");
 http.createServer( function(req,res) {
