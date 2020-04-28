@@ -48,7 +48,7 @@ http.createServer( function(req,res) {
 
 			s.on("data", function(item) {res.write(`<p><strong>Company Name:</strong><br/> ${item.Company}</p>
 													<p><strong>Ticker Name:</strong> <br/>${item.Ticker}<p>` );});
-			s.on("end", function() {res.write(`<p>No matches found. Go back and try again.</p>`); db.close();});
+			s.on("end", function() {res.write(`<p>No other matches found. Try again for more results.</p>`); db.close();});
 			res.write("</body></html>");
 		} else if (ticker != "") {
 			var s = collObj.find({Ticker: "ticker"}, {projection: {Company: 1, Ticker: 1, 
@@ -56,7 +56,7 @@ http.createServer( function(req,res) {
 
 			s.on("data", function(item) {res.write(`<p><strong>Company Name:</strong><br/> ${item.Company}</p>
 													<p><strong>Ticker Name:</strong> <br/>${item.Ticker}<p>` );});
-			s.on("end", function() {res.write(`<p>No matches found. Go back and try again.</p>`); db.close();});
+			s.on("end", function() {res.write(`<p>No other matches found. Try again for more results.</p>`); db.close();});
 			res.write("</body></html>");
 		} else if (company == "" && ticker == "") {
 			res.write("<p>No search term entered. Go back and try again.</p>");
