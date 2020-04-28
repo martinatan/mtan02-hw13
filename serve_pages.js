@@ -39,30 +39,23 @@ http.createServer( function(req,res) {
 				  "font-size: 24px; font-family: 'Roboto Slab', Serif;" + 
 				  "color: #545E75; margin:auto; text-align:center;}</style>" +
 				  "</head><body>");
-
+		var s = null;
 		if (company != "") {
-			var s = collObj.find({Company: company}, {projection: {Company: 1, Ticker: 1, 
+			s = collObj.find({Company: company}, {projection: {Company: 1, Ticker: 1, 
 				_id: 0}}).stream();
 
-			s.on("data", function(item) {res.write(`<p><strong>Company Name:</strong><br/> ${item.Company}</p>
-													<p><strong>Ticker Name:</strong> <br/>${item.Ticker}<p>` );});
-			s.on("end", function() {res.write(`<p>No other matches found. Try again for more results.</p>`); db.close();});
-			res.write("</body></html>");
-		}
-		if (ticker != "") {
-			var s = collObj.find({Ticker: "ticker"}, {projection: {Company: 1, Ticker: 1, 
+		} else if (ticker != "") {
+			s = collObj.find({Ticker: "ticker"}, {projection: {Company: 1, Ticker: 1, 
 				_id: 0}}).stream();
-
-			s.on("data", function(item) {res.write(`<p><strong>Company Name:</strong><br/> ${item.Company}</p>
-													<p><strong>Ticker Name:</strong> <br/>${item.Ticker}<p>` );});
-			s.on("end", function() {res.write(`<p>No other matches found. Try again for more results.</p>`); db.close();});
-			res.write("</body></html>");
 		}
+		s.on("data", function(item) {res.write(`<p><strong>Company Name:</strong><br/> ${item.Company}</p>
+							<p><strong>Ticker Name:</strong> <br/>${item.Ticker}<p>`);});
+		s.on("end", function() {res.write(`<p>No other matches found. Try again for more results.</p>`); db.close();});
+		
 		if (company == "" && ticker == "") {
 			res.write("<p>No search term entered. Go back and try again.</p>");
-			res.write("</body></html>");
 		}
-
+		res.write("</body></html>");
 	});
 }).listen(port);
 console.log('end of main');
