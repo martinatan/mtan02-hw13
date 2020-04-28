@@ -9,14 +9,15 @@
   "engines": {
     "node": "12.16.x"
   },
-  "repository": {
-  "type": "git",
-  "url": "https://github.com/martinatan/mtan02-hw13.git"
-},
+  "repository": "https://github.com/martinatan/mtan02-hw13.git",
   "author": "Martina Tan",
   "license": "ISC",
   "bugs": {
-  "url": ""
-},
-  "homepage": ""
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "mongodb": "^3.5.6"
+  }
 }
